@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Checker</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #ffe0e0, #ffb4b4);
+            color: #333;
+        }
+        h1 {
+            font-size: 4rem;
+            color: #ff0040;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 2px solid #ff85a1;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff6384;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+        }
+        button:hover {
+            background-color: #d94b66;
+            transform: scale(1.05);
+        }
+        .message {
+            margin-top: 30px;
+            font-size: 2rem;
+            line-height: 1.5;
+        }
+        .cake {
+            font-size: 6rem;
+            animation: bounce 1.2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .balloon {
+            position: absolute;
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        .left-balloon {
+            left: 5%;
+            top: 10%;
+        }
+        .right-balloon {
+            right: 5%;
+            top: 15%;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎂 Birthday Checker 🎈</h1>
+    <div class="balloon left-balloon">🎈</div>
+    <div class="balloon right-balloon">🎈</div>
+    <div class="form-group">
+        <label for="day">Day:</label>
+        <input type="number" id="day" placeholder="Enter day (1-31)" min="1" max="31">
+    </div>
+    <div class="form-group">
+        <label for="month">Month:</label>
+        <input type="number" id="month" placeholder="Enter month (1-12)" min="1" max="12">
+    </div>
+    <button onclick="checkBirthday()">Check Birthday 🎉</button>
+    <div class="message" id="message"></div>
+
+    <script>
+        function checkBirthday() {
+            const day = parseInt(document.getElementById('day').value);
+            const month = parseInt(document.getElementById('month').value);
+            const today = new Date();
+            const currentDay = today.getDate();
+            const currentMonth = today.getMonth() + 1;
+            const messageElement = document.getElementById('message');
+            
+            if (day === currentDay && month === currentMonth) {
+                messageElement.innerHTML = `🎉🥳 Happy Birthday! 🥳🎉 <div class="cake">🍰🎂</div>`;
+                messageElement.style.color = '#ff0040';
+            } else {
+                messageElement.innerHTML = `Not your birthday today! Enjoy your day anyway!`;
+                messageElement.style.color = '#666';
+            }
+        }
+    </script>
+</body>
+</html>
